@@ -7,7 +7,9 @@ import com.pezi.demo.model.Mitarbeiter;
 import com.pezi.demo.repository.MitarbeiterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MitarbeiterService implements MitarbeiterServiceInterface {
     @Autowired
     private MitarbeiterRepository repo;

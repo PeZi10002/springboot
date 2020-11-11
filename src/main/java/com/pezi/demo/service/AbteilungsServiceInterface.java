@@ -18,6 +18,6 @@ public interface AbteilungsServiceInterface {
     public String updateAbteilung(Abteilung abteilung);
 
     // delete
-    public String deleteAbteilungById(); // String Zurückgabe für Debugzwecke auf Postman-Seite
+    public String deleteAbteilungById(int id); // String Zurückgabe für Debugzwecke auf Postman-Seite
 
 }
