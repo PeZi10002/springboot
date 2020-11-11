@@ -2,6 +2,7 @@ package com.pezi.demo.controller;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pezi.demo.model.Abteilung;
 import com.pezi.demo.service.AbteilungsService;
 
@@ -55,7 +56,7 @@ public class AbteilungsRestController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<?> updateAbteilung(@PathVariable int id, @RequestBody Abteilung abteilung) {
-        if (service.getAbteilungById(id).getAbteilungsId() == abteilung.getAbteilungsId()) {
+        if (service.getAbteilungById(id).getAbteilungsId() == id) {
             service.updateAbteilung(abteilung);
             return ResponseEntity.ok().body(service.getAbteilungById(abteilung.getAbteilungsId()));
         } else
@@ -65,6 +66,7 @@ public class AbteilungsRestController {
 
     // delete by id auf localhost:8080/abteilung/[id]
     @DeleteMapping("/{id}")
+    @JsonIgnore
     public String deleteAbteilung(@PathVariable int id) {
         if (service.getAbteilungById(id).getAbteilungsId() == id) {
             service.deleteAbteilungById(id);

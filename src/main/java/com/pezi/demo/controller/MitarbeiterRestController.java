@@ -25,6 +25,11 @@ public class MitarbeiterRestController {
     private MitarbeiterService service;
 
     // Create new Mitarbeiter
+    /*
+     * Testen zB. mit: { "mitarbeiterId" : 1, "mitarbeiterVorname" :"Hans",
+     * "mitarbeiterNachname" : "Wurst" } funktioniert, Autoincrement funktioniert
+     * (id)
+     */
     @PostMapping
     public ResponseEntity<Mitarbeiter> createMitarbeiterRequestMethode(@Valid @RequestBody Mitarbeiter mitarbeiter) {
         try {
@@ -37,26 +42,33 @@ public class MitarbeiterRestController {
         }
     }
 
-    // Get All Mitarbeiter - Request. Pfad /mitarbeiter
+    /**
+     * Get All Mitarbeiter - Tested with get-request auf localhost:8080/mitarbeiter
+     * funktioniert
+     */
+    @GetMapping
     public ResponseEntity<List<Mitarbeiter>> getAllMitarbeiterRequestMethode() {
         return ResponseEntity.ok().body(service.getAllMitarbeiter());
     }
 
-    // Get Mitarbeiter by Mitarbeiter-ID Request
+    /**
+     * Get Mitarbeiter by Mitarbeiter-ID Request auf zB.
+     * localhost:8080/mitarbeiter/2 funktioniert
+     */
     @GetMapping("/{id}") // localhost:8080/mitarbeiter/[id]
     public ResponseEntity<Mitarbeiter> getMitarbeiterByIdRequestMethode(@PathVariable int id) {
         return ResponseEntity.ok().body(service.getMitarbeiterById(id));
     }
 
     // Update Mitarbeiter
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateMitarbeiterRequestMethode(@PathVariable int id,
             @RequestBody Mitarbeiter mitarbeiter) {
-        if (service.getMitarbeiterById(id).getMitarbeiterId() == mitarbeiter.getMitarbeiterId()) {
+        if (service.getMitarbeiterById(id).getMitarbeiterId() == id) {
             service.updateMitarbeiter(mitarbeiter);
             return ResponseEntity.ok().body(service.getMitarbeiterById(mitarbeiter.getMitarbeiterId()));
         } else
-            return new ResponseEntity<String>("Konnte Abteilung nicht updaten!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("Konnte Mitarbeiter nicht updaten!", HttpStatus.NOT_FOUND);
     }
 
 }
