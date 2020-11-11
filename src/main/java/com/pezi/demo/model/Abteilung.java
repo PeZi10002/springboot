@@ -13,11 +13,12 @@ public class Abteilung {
 
     @Id
     @NotNull
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int abteilungsId;
     private String abteilungsName;
 
     // Konstruktoren
+
     public Abteilung(@NotNull int abteilungsId, String abteilungsName) {
         this.abteilungsId = abteilungsId;
         this.abteilungsName = abteilungsName;

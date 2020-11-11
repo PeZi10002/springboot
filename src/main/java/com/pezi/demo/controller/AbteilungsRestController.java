@@ -25,8 +25,8 @@ public class AbteilungsRestController {
     AbteilungsService service;
 
     /*
-     * create Request (funktioniert) Getestet mit Json: { "abteilungsId" : "1",
-     * "abteilungsName" : "Lager" }
+     * create Request (funktioniert) Getestet mit Json: { "abteilungsName" :
+     * "Ldfagsffer" }
      */
     @PostMapping // localhost:8080/abteilung (Der Einfachheit halber)
     public ResponseEntity<Abteilung> createAbteilung(@RequestBody Abteilung abteilung) {
