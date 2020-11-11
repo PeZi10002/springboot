@@ -37,6 +37,21 @@ public class Mitarbeiter {
     @JsonIgnore
     private Abteilung abteilung;
 
+    public Mitarbeiter(int mitarbeiterId, @NotNull String mitarbeiterVorname, @NotNull String mitarbeiterNachname,
+            Abteilung abteilung) {
+        this.mitarbeiterId = mitarbeiterId;
+        this.mitarbeiterVorname = mitarbeiterVorname;
+        this.mitarbeiterNachname = mitarbeiterNachname;
+        this.abteilung = abteilung;
+    }
+
+    public Mitarbeiter(@NotNull String mitarbeiterVorname, @NotNull String mitarbeiterNachname, Abteilung abteilung) {
+
+        this.mitarbeiterVorname = mitarbeiterVorname;
+        this.mitarbeiterNachname = mitarbeiterNachname;
+        this.abteilung = abteilung;
+    }
+
     // Getters and Setters
 
     public int getMitarbeiterId() {

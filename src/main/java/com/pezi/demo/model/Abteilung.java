@@ -17,6 +17,24 @@ public class Abteilung {
     // bidirektional??
     private Mitarbeiter mitarbeiter;
 
+    // Konstruktoren
+    public Abteilung(@NotNull int abteilungsId, String abteilungsName, Mitarbeiter mitarbeiter) {
+        this.abteilungsId = abteilungsId;
+        this.abteilungsName = abteilungsName;
+        this.mitarbeiter = mitarbeiter;
+    }
+
+    // ohne Id - Autogenerierung
+    public Abteilung(String abteilungsName, Mitarbeiter mitarbeiter) {
+        this.abteilungsName = abteilungsName;
+        this.mitarbeiter = mitarbeiter;
+    }
+
+    // ohne Mitarbeiter
+    public Abteilung(String abteilungsName) {
+        this.abteilungsName = abteilungsName;
+    }
+
     // Getters & Setters
 
     public int getAbteilungsId() {
