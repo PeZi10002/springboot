@@ -12,7 +12,7 @@ public interface AbteilungsServiceInterface {
     // read
     public Abteilung getAbteilungById(int id);
 
-    public List<Abteilung> getAllAbteilung();
+    public List<Abteilung> getAllAbteilungen();
 
     // update
     public String updateAbteilung(Abteilung abteilung);

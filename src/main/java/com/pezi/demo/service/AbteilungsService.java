@@ -6,10 +6,12 @@ import java.util.Optional;
 import com.pezi.demo.model.Abteilung;
 import com.pezi.demo.repository.AbteilungsRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AbteilungsService implements AbteilungsServiceInterface {
+    @Autowired
     private AbteilungsRepository repo;
 
     @Override
@@ -29,7 +31,7 @@ public class AbteilungsService implements AbteilungsServiceInterface {
     }
 
     @Override
-    public List<Abteilung> getAllAbteilung() {
+    public List<Abteilung> getAllAbteilungen() {
         return repo.findAll();
     }
 
