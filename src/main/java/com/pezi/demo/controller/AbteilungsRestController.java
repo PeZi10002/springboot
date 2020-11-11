@@ -6,6 +6,7 @@ import com.pezi.demo.model.Abteilung;
 import com.pezi.demo.service.AbteilungsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,12 +47,15 @@ public class AbteilungsRestController {
         return service.getAbteilungById(id);
     }
 
-    // Update (Requestbody mit ganzen Abteilungsobjekt inkl. id übergeben)
+    // Update
     @PutMapping("/{id}") // localhost:8080/abteilung/[id]
-    public ResponseEntity<Abteilung> updateAbteilung(@PathVariable int id, @RequestBody Abteilung abteilung) {
-        service.updateAbteilung(abteilung);
-
-        return ResponseEntity.ok().body(service.getAbteilungById(abteilung.getAbteilungsId()));
+    public ResponseEntity<?> updateAbteilung(@PathVariable int id, @RequestBody Abteilung abteilung) {
+        if (service.getAbteilungById(id).getAbteilungsId() == abteilung.getAbteilungsId()) {
+            service.updateAbteilung(abteilung);
+            return ResponseEntity.ok().body(service.getAbteilungById(abteilung.getAbteilungsId()));
+        } else
+            return new ResponseEntity<String>("Konnte Abteilung nicht updaten. Eventuell nicht vorhanden.",
+                    HttpStatus.NOT_FOUND);
     }
 
     // delete by id

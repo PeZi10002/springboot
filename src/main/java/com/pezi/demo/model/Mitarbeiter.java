@@ -53,6 +53,9 @@ public class Mitarbeiter {
         this.abteilung = abteilung;
     }
 
+    public Mitarbeiter() {
+    }
+
     // Getters and Setters
 
     public int getMitarbeiterId() {
