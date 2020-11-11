@@ -24,10 +24,7 @@ public class AbteilungsRestController {
     AbteilungsService service;
 
     // create Request
-    @PostMapping /* ("createAbteilung") */
-    // localhost:8080/abteilung/createAbteilung
-    // DER EINFACHHEIT HALBER ALLE REQUESTS AN /abteilung geleitet, damit Sie nicht
-    // verschiedene URI`s eingeben müssen
+    @PostMapping // localhost:8080/abteilung (Der Einfachheit halber)
     public ResponseEntity<Abteilung> createAbteilung(@RequestBody Abteilung abteilung) {
         this.service.createAbteilung(abteilung);
         // Hole diese gespeicherte Abteilung anhand der ID aus der Datenbank und returne
