@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AbteilungsService implements AbteilungsServiceInterface {
-    private AbteilungsRepository repo.
+    private AbteilungsRepository repo;
 
     @Override
     public Abteilung createAbteilung(Abteilung abteilung) {
-        repo.save(abteilung);
+        return repo.save(abteilung);
     }
 
     @Override
