@@ -16,20 +16,20 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "Mitarbeiter")
+@Table(name = "mitarbeiter")
 public class Mitarbeiter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mId;
+    private int mitarbeiterId;
 
     @NotNull
     @Lob
-    private String mVorname;
+    private String mitarbeiterVorname;
 
     @NotNull
     @Lob
-    private String mNachname;
+    private String mitarbeiterNachname;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "abteilungsId" /* , nullable = false */)
@@ -39,28 +39,28 @@ public class Mitarbeiter {
 
     // Getters and Setters
 
-    public int getmId() {
-        return mId;
+    public int getMitarbeiterId() {
+        return mitarbeiterId;
     }
 
-    public void setmId(int mId) {
-        this.mId = mId;
+    public void setMitarbeiterId(int mitarbeiterId) {
+        this.mitarbeiterId = mitarbeiterId;
     }
 
-    public String getmVorname() {
-        return mVorname;
+    public String getMitarbeiterVorname() {
+        return mitarbeiterVorname;
     }
 
-    public void setmVorname(String mVorname) {
-        this.mVorname = mVorname;
+    public void setMitarbeiterVorname(String mitarbeiterVorname) {
+        this.mitarbeiterVorname = mitarbeiterVorname;
     }
 
-    public String getmNachname() {
-        return mNachname;
+    public String getMitarbeiterNachname() {
+        return mitarbeiterNachname;
     }
 
-    public void setmNachname(String mNachname) {
-        this.mNachname = mNachname;
+    public void setMitarbeiterNachname(String mitarbeiterNachname) {
+        this.mitarbeiterNachname = mitarbeiterNachname;
     }
 
     public Abteilung getAbteilung() {
