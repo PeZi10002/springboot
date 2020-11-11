@@ -17,6 +17,6 @@ public interface MitarbeiterServiceInterface {
     public String updateMitarbeiter(Mitarbeiter mitarbeiter);
 
     // delete
-    public String deleteMitarbeiterById(); // String Zurückgabe für Debugzwecke auf Postman-Seite
+    public String deleteMitarbeiterById(int id); // String Zurückgabe für Debugzwecke auf Postman-Seite
 
 }
