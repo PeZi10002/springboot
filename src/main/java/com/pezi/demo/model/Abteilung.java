@@ -28,6 +28,9 @@ public class Abteilung {
         this.abteilungsName = abteilungsName;
     }
 
+    public Abteilung() {
+    }
+
     // Getters & Setters
 
     public int getAbteilungsId() {

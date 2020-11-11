@@ -23,7 +23,10 @@ public class AbteilungsRestController {
     @Autowired
     AbteilungsService service;
 
-    // create Request
+    /*
+     * create Request (funktioniert) Getestet mit Json: { "abteilungsId" : "1",
+     * "abteilungsName" : "Lager" }
+     */
     @PostMapping // localhost:8080/abteilung (Der Einfachheit halber)
     public ResponseEntity<Abteilung> createAbteilung(@RequestBody Abteilung abteilung) {
         this.service.createAbteilung(abteilung);
@@ -32,20 +35,25 @@ public class AbteilungsRestController {
         return ResponseEntity.ok().body(service.getAbteilungById(abteilung.getAbteilungsId()));
     }
 
-    // get all Abteilungen Request
+    // get all Abteilungen Request auf http://localhost:8080/abteilung
+    // funktioniert
     @GetMapping
     public List<Abteilung> getAllAbteilungen() {
         return service.getAllAbteilungen();
     }
 
-    // get Abteilung by ID - Request
+    // get Abteilung by ID - Request auf zB. http://localhost:8080/abteilung/1
+    // funktioniert
     @GetMapping("/{id}") // localhost:8080/abteilung/[id]
     public Abteilung getAbteilungById(@PathVariable int id) {
         return service.getAbteilungById(id);
     }
 
-    // Update
-    @PutMapping("/{id}") // localhost:8080/abteilung/[id]
+    /*
+     * Update PUT auf localhost:8080/abteilung/[id] inklusive Requestbody zB.:
+     * {"abteilungsId": 1,"abteilungsName": "Updatetest"} funktioniert
+     */
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateAbteilung(@PathVariable int id, @RequestBody Abteilung abteilung) {
         if (service.getAbteilungById(id).getAbteilungsId() == abteilung.getAbteilungsId()) {
             service.updateAbteilung(abteilung);
@@ -55,11 +63,13 @@ public class AbteilungsRestController {
                     HttpStatus.NOT_FOUND);
     }
 
-    // delete by id
-    @DeleteMapping("/{id") // localhost:8080/abteilung/[id]
+    // delete by id auf localhost:8080/abteilung/[id]
+    @DeleteMapping("/{id}")
     public String deleteAbteilung(@PathVariable int id) {
-        service.deleteAbteilungById(id);
-        return "Abteilung gelöscht.";
+        if (service.getAbteilungById(id).getAbteilungsId() == id) {
+            service.deleteAbteilungById(id);
+            return "Abteilung gelöscht.";
+        } else
+            return "Abteilung wohl nicht vorhanden, konnte nicht gelöscht werden.";
     }
-
 }
