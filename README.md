@@ -1,3 +1,4 @@
 # springboot
 
-Habe Java 15 versehentlich verwendet, hoffe Sie können das in der pom.xml auf 11 ändern und trotzdem durchstarten.
+Abgabe vom 11.11.2020 (Kontrollprüfung 1 Spring-Boot Softwaregruppe IT-Kolleg)
+
